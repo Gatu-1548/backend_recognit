@@ -5,7 +5,7 @@ const socketIo = require('socket.io');  // Importamos socket.io
 
 const userRoutes = require('./src/routes');  // Importamos las rutas de usuario
 const roleRoutes = require('./src/roleRoutes');  // Importamos las rutas de roles
-
+const generateUIroutes = require('./src/generateUI');
 const app = express();
 const port = 5000;
 
@@ -27,7 +27,7 @@ let rooms = {};
 // Rutas de usuario y roles
 app.use('/api/users', userRoutes);
 app.use('/api/roles', roleRoutes);
-
+app.use('/api/generate-ui', generateUIroutes);
 // Configurar socket.io para manejar eventos en tiempo real
 io.on('connection', (socket) => {
   console.log('Un cliente se ha conectado');
