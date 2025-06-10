@@ -30,7 +30,13 @@ const processImage = async (imageBuffer) => {
       model: "gemini-2.0-flash",
       contents: [
         createUserContent([
-          "Genera una estructura de UI tipo JSON para esta imagen",
+          `Convierte esta imagen en un archivo main.dart completo y funcional para Flutter.
+
+- Usa MaterialApp y Scaffold.
+- Usa los widgets necesarios para reflejar el diseño.
+- Aplica estilos visibles: textos de color teal (Colors.teal), campos con fondo gris claro (#F0F0F0), botones con fondo teal y texto blanco.
+- Asegúrate de que todos los colores estén definidos como constantes o visibles en el código para que puedan ser fácilmente modificados.
+- Devuelve únicamente el código Dart sin explicaciones.`,
           createPartFromUri(image.uri, image.mimeType),
         ]),
       ],
