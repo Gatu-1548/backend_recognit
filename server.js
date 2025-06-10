@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const http = require('http');  // Importamos http para usarlo con socket.io
@@ -13,7 +14,7 @@ const port = 5000;
 const server = http.createServer(app);  // Creamos el servidor HTTP
 const io = socketIo(server, {
   cors: {
-    origin: '*',
+    origin: ['http://localhost:5173', 'https://frontenddesing-production.up.railway.app'], 
     methods: ['GET', 'POST'],
     allowedHeaders: ["*"],
     credentials: true

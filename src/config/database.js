@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config(); // Asegura que puedas leer variables del archivo .env
 
-// Conexión con PostgreSQL
-const sequelize = new Sequelize('postgresql://databaseproject_owner:npg_OGmYVb1la0Io@ep-rapid-field-a43r0ieo-pooler.us-east-1.aws.neon.tech/databaseproject?sslmode=require', {
+// Conexión con PostgreSQL desde .env
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
-  logging: false, // Desactivar los logs SQL
+  logging: false,
 });
 
 module.exports = sequelize;

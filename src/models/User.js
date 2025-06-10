@@ -44,3 +44,17 @@ sequelize.sync({ alter: true })  // Este método actualiza las tablas sin elimin
   .catch((err) => console.error('Error al sincronizar la base de datos:', err));
 
 module.exports = User;
+
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  console.log('🧪 Login recibido:', { email, password });
+
+  try {
+    const token = await loginUserService(email, password);
+    res.json({ token });
+  } catch (err) {
+    console.error('❌ Error en loginUser:', err.message);
+    res.status(500).json({ msg: 'Error en el login', error: err.message });
+  }
+};
+
