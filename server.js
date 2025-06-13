@@ -15,7 +15,7 @@ const port = 5000;
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: ['http://localhost:5173', 'https://frontenddesing-production.up.railway.app'],
+    origin: '*', 
     methods: ['GET', 'POST'],
     allowedHeaders: ["*"],
     credentials: true
